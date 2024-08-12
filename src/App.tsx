@@ -1,45 +1,21 @@
 import { useState } from 'react';
-import './App.css';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import Cell from './components/Cell';
 
 function App() {
-    const [count, setCount] = useState(0);
-
+    const initialCells: string[] = ['', '', '', '', '', '', '', '', ''];
+    const [cells, setCells] = useState<string[]>(initialCells);
     return (
-        <>
-            <div className="flex justify-center">
-                <a
-                    href="https://vitejs.dev"
-                    target="_blank">
-                    <img
-                        src={viteLogo}
-                        alt="Vite logo"
+        <main className="mx-5 my-96 flex h-full justify-center">
+            <div className="grid w-fit grid-cols-3 justify-center justify-items-center border border-blue-400">
+                {cells.map((cell, index) => (
+                    <Cell
+                        key={index}
+                        id={index}
+                        value={cell}
                     />
-                </a>
-                <a
-                    href="https://react.dev"
-                    target="_blank">
-                    <img
-                        src={reactLogo}
-                        alt="React logo"
-                    />
-                </a>
+                ))}
             </div>
-            <div className="my-5 flex justify-center gap-7">
-                <button
-                    className="min-w-10 rounded-xl border bg-slate-200 p-2"
-                    onClick={() => setCount((count) => count + 1)}>
-                    +
-                </button>
-                <button
-                    className="min-w-10 rounded-xl border bg-slate-200 p-2"
-                    onClick={() => count > 0 && setCount((count) => count - 1)}>
-                    -
-                </button>
-            </div>
-            <p>{count}</p>
-        </>
+        </main>
     );
 }
 
