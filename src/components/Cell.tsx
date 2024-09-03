@@ -18,7 +18,7 @@ function Cell({ value, id, onClick }: CellsProps) {
                     color="blue"
                 />
             )}
-            {value === 'zero' && (
+            {value === 'circle' && (
                 <GiCircle
                     size={72}
                     color="blue"
